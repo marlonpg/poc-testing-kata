@@ -1,4 +1,4 @@
-package com.gamba.software.photoapp;
+package com.gamba.software.testingapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

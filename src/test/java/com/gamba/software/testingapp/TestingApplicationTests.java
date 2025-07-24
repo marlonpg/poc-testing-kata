@@ -1,10 +1,10 @@
-package com.gamba.software.photoapp;
+package com.gamba.software.testingapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PhotoappApplicationTests {
+class TestingApplicationTests {
 
 	@Test
 	void contextLoads() {

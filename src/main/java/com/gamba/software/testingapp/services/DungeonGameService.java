@@ -1,5 +1,8 @@
-package com.gamba.software.testingapp;
+package com.gamba.software.testingapp.services;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class DungeonGameService {
     public int calculateMinimumHP(int[][] dungeon) {
         int rows = dungeon.length;
