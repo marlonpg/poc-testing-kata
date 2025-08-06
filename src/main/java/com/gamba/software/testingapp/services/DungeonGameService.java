@@ -1,9 +1,20 @@
 package com.gamba.software.testingapp.services;
 
+import com.gamba.software.testingapp.entities.GameResult;
+import com.gamba.software.testingapp.repositories.GameResultRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DungeonGameService {
+
+    private final GameResultRepository gameResultRepository;
+
+    @Autowired
+    public DungeonGameService(GameResultRepository gameResultRepository) {
+        this.gameResultRepository = gameResultRepository;
+    }
+
     public int calculateMinimumHP(int[][] dungeon) {
         int rows = dungeon.length;
         int cols = dungeon[0].length;
@@ -28,6 +39,15 @@ public class DungeonGameService {
             }
         }
 
-        return dp[0][0];
+        int result = dp[0][0];
+
+        // Save result to database (example values for player and outcome)
+        GameResult gameResult = new GameResult();
+        gameResult.setPlayer("player1");
+        gameResult.setScore(result);
+        gameResult.setOutcome("COMPLETED");
+        gameResultRepository.save(gameResult);
+
+        return result;
     }
 }
