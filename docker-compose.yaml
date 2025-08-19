@@ -1,0 +1,43 @@
+# Docker Compose file version
+version: '3.8'
+
+# Define the services (containers)
+services:
+  # The Java application service
+  app:
+    # Build the Docker image from the Dockerfile in the current directory
+    build: .
+    # Port mapping from host to container
+    ports:
+      - "8080:8080"
+    # Environment variables for the Spring Boot application to connect to the database
+    # These should match the database service configuration below
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mydatabase
+      - SPRING_DATASOURCE_USERNAME=myuser
+      - SPRING_DATASOURCE_PASSWORD=mypassword
+    # This service depends on the 'db' service.
+    # It ensures that the database container starts before the application container.
+    depends_on:
+      - db
+
+  # The PostgreSQL database service
+  db:
+    # Use the official PostgreSQL image from Docker Hub
+    image: postgres:16-alpine
+    # Environment variables to configure the PostgreSQL instance
+    # IMPORTANT: Change these default credentials for production environments
+    environment:
+      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+    # Port mapping to allow connecting to the database from your host machine (e.g., with a DB client)
+    ports:
+      - "5432:5432"
+    # Mount a volume to persist database data even if the container is removed
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+# Define the volume for data persistence
+volumes:
+  postgres_data:
