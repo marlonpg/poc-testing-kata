@@ -72,25 +72,25 @@ While the application is running, you can access the H2 database console to view
     *   **User Name**: `sa`
     *   **Password**: (leave blank)
 
-### 4. Automated Threat Analysis Tests with TreatAgile
+### 4. Automated Threat Analysis Tests with Threagile
 
-Automated threat analysis involves scanning your application for security vulnerabilities using a specialized tool like TreatAgile. This is typically done in a CI/CD pipeline.
+Automated threat analysis involves scanning your application for security vulnerabilities using a specialized tool like Threagile. This is typically done in a CI/CD pipeline.
 
 #### How It Works
 
 1.  **Build Your App**: A build process creates an artifact (e.g., a JAR file or Docker image).
-2.  **Scan the Artifact**: The artifact is submitted to TreatAgile's scanning service via an API call or command-line tool.
-3.  **Get Results**: TreatAgile analyzes the artifact and returns a report detailing any security threats or vulnerabilities.
+2.  **Scan the Artifact**: The artifact is submitted to Threagile's scanning service via an API call or command-line tool.
+3.  **Get Results**: Threagile analyzes the artifact and returns a report detailing any security threats or vulnerabilities.
 
 #### Example (Conceptual)
 
-If TreatAgile provides a REST API, you might automate the scan with a script like this:
+If Threagile provides a REST API, you might automate the scan with a script like this:
 
 ```bash
-# This is a generic example. Refer to TreatAgile's documentation for actual usage.
-curl -X POST https://api.treatagile.com/scan \
-  -H "Authorization: Bearer <YOUR_TREATAGILE_API_TOKEN>" \
+# This is a generic example. Refer to Threagile's documentation for actual usage.
+curl -X POST https://api.threagile.com/scan \
+  -H "Authorization: Bearer <YOUR_THREAGILE_API_TOKEN>" \
   -F "file=@target/testingapp-0.0.1-SNAPSHOT.jar"
 ```
 
-To proceed, you would need to consult the **TreatAgile documentation** for their specific API endpoints, authentication methods, and required parameters.
+To proceed, you would need to consult the **Threagile documentation** for their specific API endpoints, authentication methods, and required parameters.
